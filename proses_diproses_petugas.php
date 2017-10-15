@@ -12,6 +12,7 @@ $data_permintaan = mysqli_fetch_array($res_permintaan);
 $gol_darah = $data_permintaan['GOLONGAN_DARAH'];
 $jenis_darah = $data_permintaan['JENIS_DARAH'];
 $gol_darah1 = $data_permintaan['GOLONGAN_DARAH'];
+$jenis_darah1 = $data_permintaan['JENIS_DARAH'];
 
 require('query_darah.php');
 
@@ -25,6 +26,9 @@ if($ketemu>0){
 
 		$sql_ubah_stok = "update gol_darah set stok_darah='$stok_baru' where golongan_darah='$gol_darah' and jenis_darah='$jenis_darah'";
 		$res_ubah_stok = mysqli_query($link,$sql_ubah_stok);
+		
+		$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah', jenis_darah='$jenis_darah' where permintaan_id='$id'";
+		$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 	}elseif($stok_baru<0){
 		$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 		$res_status = mysqli_query($link,$sql_status);
@@ -105,6 +109,9 @@ if($ketemu>0){
 																if($ketemu==0){
 																	$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 																	$res_status = mysqli_query($link,$sql_status);
+																	
+																	$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+																	$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 																}elseif($ketemu>0){
 																	require('query_diproses_berhasil.php');
 																}
@@ -186,6 +193,9 @@ if($ketemu>0){
 								if($ketemu==0){
 									$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 									$res_status = mysqli_query($link,$sql_status);
+									
+									$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+									$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 								}elseif($ketemu>0){
 									require('query_diproses_berhasil.php');
 								}
@@ -242,6 +252,9 @@ if($ketemu>0){
 								if($ketemu==0){
 									$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 									$res_status = mysqli_query($link,$sql_status);
+									
+									$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+									$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 								}elseif($ketemu>0){
 									require('query_diproses_berhasil.php');
 								}
@@ -280,6 +293,9 @@ if($ketemu>0){
 				if($ketemu==0){
 					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 					$res_status = mysqli_query($link,$sql_status);
+					
+					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 				}elseif($ketemu>0){
 					require('query_diproses_berhasil.php');
 				}
@@ -324,6 +340,9 @@ if($ketemu>0){
 								if($ketemu==0){
 									$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 									$res_status = mysqli_query($link,$sql_status);
+									
+									$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+									$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 								}elseif($ketemu>0){
 									require('query_diproses_berhasil.php');
 								}
@@ -362,6 +381,9 @@ if($ketemu>0){
 				if($ketemu==0){
 					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 					$res_status = mysqli_query($link,$sql_status);
+					
+					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 				}elseif($ketemu>0){
 					require('query_diproses_berhasil.php');
 				}
@@ -388,6 +410,9 @@ if($ketemu>0){
 				if($ketemu==0){
 					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 					$res_status = mysqli_query($link,$sql_status);
+					
+					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 				}elseif($ketemu>0){
 					require('query_diproses_berhasil.php');
 				}
@@ -409,6 +434,9 @@ if($ketemu>0){
 			if($ketemu==0){
 				$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 				$res_status = mysqli_query($link,$sql_status);
+				
+				$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+				$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 			}elseif($ketemu>0){
 				require('query_diproses_berhasil.php');
 			}
@@ -417,6 +445,6 @@ if($ketemu>0){
 		}
 	}
 	
-//	echo ("<script> location.href ='petugas.php?menu=permintaan&action=tampil';</script>");
+	echo ("<script> location.href ='petugas.php?menu=permintaan&action=tampil';</script>");
 }
 ?>

@@ -1,20 +1,17 @@
 <?php
 include "koneksi.php";
 $link = koneksi_db();
+$id = $_GET['id'];
 //$q = strtolower($_GET["q"]);
 //if (!$q) return;
-$term = trim(strip_tags($_GET['term']));
+$sql = "SELECT kode_barcode  FROM kantong_darah WHERE kode_barcode LIKE '%".$_GET['query']."%' and status='tersedia' and id_golongan_darah='$id' "; 
+ $result    = mysqli_query($link,$sql);
+  
+ $json = [];
+ while($row = $result->fetch_assoc()){
+      $json[] = $row['kode_barcode'];
+ }
 
-$query = "select * from kantong_darah where kode_barcode LIKE '%$term%'";
-
-$sql = mysqli_query($link,$query);
-
-while($row = mysqli_fetch_array($sql)) {
-	$row['value']=htmlentities(stripslashes($row['KODE_BARCODE']));
-    $row['id']=(int)$row['Code'];
-//buat array yang nantinya akan di konversi ke json
-    $row_set[] = $row;
-}
-echo json_encode($row_set);
+ echo json_encode($json);
 
 ?>

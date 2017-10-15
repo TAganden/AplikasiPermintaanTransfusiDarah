@@ -6,6 +6,9 @@
 
 		$sql_ubah_stok = "update gol_darah set stok_darah='$stok_baru' where golongan_darah='$gol_darah' and jenis_darah='$jenis_darah'";
 		$res_ubah_stok = mysqli_query($link,$sql_ubah_stok);
+		
+		$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah', jenis_darah='$jenis_darah' where permintaan_id='$id'";
+		$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
 	}elseif($stok_baru<0){
 		$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 		$res_status = mysqli_query($link,$sql_status);

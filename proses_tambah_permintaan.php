@@ -37,7 +37,7 @@ if(!empty($_POST['bagian'])){
 	}
 	
 	$query_status = "insert into status_permintaan values(NULL,NULL,'$permintaan_id',NULL,'menunggu diproses',CURTIME(),CURDATE())";
-	$result2 = mysqli_query($link,$query_status);
+	$result_status = mysqli_query($link,$query_status);
 	echo ("<script> location.href ='rumahsakit.php?menu=permintaan&action=tampil';</script>");
 }
 ?>
