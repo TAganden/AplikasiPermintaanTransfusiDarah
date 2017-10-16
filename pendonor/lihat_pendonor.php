@@ -30,6 +30,14 @@ $data_pendonor = mysqli_fetch_array( $result_pendonor );
 	</tr>
 	<tr>
 		<td>
+			<strong>Tempat Lahir</strong>
+		</td>
+		<td>
+			: <?php echo $data_pendonor['TEMPAT_LAHIR']; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<strong>Tanggal Lahir</strong>
 		</td>
 		<td>
@@ -43,7 +51,7 @@ $data_pendonor = mysqli_fetch_array( $result_pendonor );
 		</td>
 		<td>
 			:
-			<?php echo $data_pendonor['ALAMAT']; ?>
+			<?php echo $data_pendonor['ALAMAT']." ".$data_pendonor['RT_RW'].",".$data_pendonor['KELURAHAN'].",".$data_pendonor['KECAMATAN']; ?>
 		</td>
 	</tr>
 	<tr>
@@ -53,6 +61,14 @@ $data_pendonor = mysqli_fetch_array( $result_pendonor );
 		<td>
 			:
 			<?php echo $data_pendonor['NO_TELEPON']; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<strong>Pekerjaan</strong>
+		</td>
+		<td>
+			: <?php echo $data_pendonor['PEKERJAAN']; ?>
 		</td>
 	</tr>
 	<tr>

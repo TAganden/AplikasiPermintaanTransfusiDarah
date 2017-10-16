@@ -12,7 +12,7 @@ if ( isset( $_SESSION[ 's_pesan' ] ) ) {
 <br>
 <br>
 <div class="container-fluid" align="center"><br>
-	<h1>Aplikasi Permintaan Transfusi Darah</h1>
+	<h1>Login Form</h1>
 </div>
 <br>
 <div class="container">

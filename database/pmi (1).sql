@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 16 Okt 2017 pada 03.17
+-- Generation Time: 17 Okt 2017 pada 00.50
 -- Versi Server: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -53,16 +53,70 @@ CREATE TABLE `gol_darah` (
 --
 
 INSERT INTO `gol_darah` (`ID_GOLONGAN_DARAH`, `GOLONGAN_DARAH`, `JENIS_DARAH`, `STOK_DARAH`) VALUES
-(1, 'A+', 'Whole Blood', 0),
+(1, 'A+', 'Whole Blood', 2),
 (2, 'A+', 'Packed Red Cells', 0),
-(3, 'A+', 'Thrombocyt Concentrate', 0),
+(3, 'A+', 'Thrombocyt Concentrate', 1),
 (4, 'A+', 'Liquid Plasma', 0),
 (5, 'A+', 'Fresh Frozen Plasma', 0),
 (6, 'A+', 'Cryoprecipitate', 0),
 (7, 'A+', 'Whased Red Cells', 0),
 (8, 'A+', 'Buffy Coat', 0),
 (9, 'A-', 'Whole Blood', 0),
-(13, 'AB+', 'Whole Blood', 3);
+(13, 'AB+', 'Whole Blood', 2),
+(14, 'AB-', 'Packed Red Cells', 1),
+(15, 'AB+', 'Packed Red Cells', 0),
+(16, 'AB+', 'Thrombocyt Concentrate', 1),
+(17, 'A-', 'Packed Red Cells', 2),
+(18, 'A-', 'Thrombocyt Concentrate', 3),
+(19, 'A-', 'Liquid Plasma', 1),
+(20, 'A-', 'Fresh Frozen Plasma', 2),
+(21, 'A-', 'Cryoprecipitate', 2),
+(22, 'A-', 'Whased Red Cells', 2),
+(23, 'A-', 'Buffy Coat', 5),
+(24, 'AB+', 'Liquid Plasma', 5),
+(25, 'AB+', 'Fresh Frozen Plasma', 5),
+(26, 'AB+', 'Cryoprecipitate', 5),
+(27, 'AB+', 'Whased Red Cells', 5),
+(28, 'AB+', 'Buffy Coat', 5),
+(29, 'AB-', 'Whole Blood', 5),
+(30, 'AB-', 'Thrombocyt Concentrate', 5),
+(31, 'AB-', 'Liquid Plasma', 5),
+(32, 'AB-', 'Fresh Frozen Plasma', 5),
+(33, 'AB-', 'Cryoprecipitate', 5),
+(34, 'AB-', 'Whased Red Cells', 5),
+(35, 'AB-', 'Buffy Coat', 5),
+(36, 'O+', 'Whole Blood', 5),
+(37, 'O+', 'Packed Red Cells', 5),
+(38, 'O+', 'Thrombocyt Concentrate', 2),
+(39, 'O+', 'Liquid Plasma', 0),
+(40, 'O+', 'Fresh Frozen Plasma', 5),
+(41, 'O+', 'Whased Red Cells', 5),
+(42, 'O+', 'Cryoprecipitate', 5),
+(43, 'O+', 'Buffy Coat', 5),
+(44, 'O-', 'Whole Blood', 5),
+(45, 'O-', 'Packed Red Cells', 5),
+(46, 'O-', 'Thrombocyt Concentrate', 2),
+(47, 'O-', 'Liquid Plasma', 5),
+(48, 'O-', 'Fresh Frozen Plasma', 5),
+(49, 'O-', 'Cryoprecipitate', 5),
+(50, 'O-', 'Whased Red Cells', 5),
+(51, 'O-', 'Buffy Coat', 5),
+(52, 'B+', 'Whole Blood', 5),
+(53, 'B+', 'Packed Red Cells', 2),
+(54, 'B+', 'Thrombocyt Concentrate', 2),
+(55, 'B+', 'Fresh Frozen Plasma', 2),
+(56, 'B+', 'Liquid Plasma', 6),
+(57, 'B+', 'Cryoprecipitate', 5),
+(58, 'B+', 'Whased Red Cells', 5),
+(59, 'B+', 'Buffy Coat', 5),
+(60, 'B-', 'Whole Blood', 5),
+(61, 'B-', 'Packed Red Cells', 5),
+(62, 'B-', 'Thrombocyt Concentrate', 5),
+(63, 'B-', 'Fresh Frozen Plasma', 5),
+(64, 'B-', 'Liquid Plasma', 5),
+(65, 'B-', 'Cryoprecipitate', 5),
+(66, 'B-', 'Whased Red Cells', 5),
+(67, 'B-', 'Buffy Coat', 5);
 
 -- --------------------------------------------------------
 
@@ -74,6 +128,7 @@ CREATE TABLE `kantong_darah` (
   `KODE_BARCODE` varchar(15) NOT NULL,
   `PENDONOR_ID` varchar(15) DEFAULT NULL,
   `ID_GOLONGAN_DARAH` smallint(6) DEFAULT NULL,
+  `JENIS_DARAH` varchar(30) NOT NULL,
   `VOLUME_DARAH` smallint(6) DEFAULT NULL,
   `TGL_PENGAMBILAN` date DEFAULT NULL,
   `WAKTU_PENGAMBILAN` time DEFAULT NULL,
@@ -85,13 +140,14 @@ CREATE TABLE `kantong_darah` (
 -- Dumping data untuk tabel `kantong_darah`
 --
 
-INSERT INTO `kantong_darah` (`KODE_BARCODE`, `PENDONOR_ID`, `ID_GOLONGAN_DARAH`, `VOLUME_DARAH`, `TGL_PENGAMBILAN`, `WAKTU_PENGAMBILAN`, `TGL_KADALUARSA`, `STATUS`) VALUES
-('111', NULL, 1, 50, '2017-10-12', '07:21:26', '2017-10-11', 'tidak tersedia'),
-('112', NULL, 9, 80, '2017-10-05', '06:13:41', '2017-10-13', 'tidak tersedia'),
-('113', NULL, 3, 60, '2017-10-04', '11:26:18', '2017-10-05', 'tersedia'),
-('114', NULL, 3, 45, '2017-10-04', '06:08:19', '2017-10-13', 'tidak tersedia'),
-('115', NULL, 3, 60, '2017-10-02', '12:13:15', '2017-10-04', 'tersedia'),
-('12345678', '11115', 13, 300, '2017-10-05', '02:04:00', '2017-11-17', 'tersedia');
+INSERT INTO `kantong_darah` (`KODE_BARCODE`, `PENDONOR_ID`, `ID_GOLONGAN_DARAH`, `JENIS_DARAH`, `VOLUME_DARAH`, `TGL_PENGAMBILAN`, `WAKTU_PENGAMBILAN`, `TGL_KADALUARSA`, `STATUS`) VALUES
+('1', '1', 13, '', 300, '2017-10-04', '00:00:00', '2017-10-05', 'tersedia'),
+('1230498', '10114280', 14, 'Packed Red Cells', 300, '2017-10-12', '00:01:00', '2017-10-13', 'tersedia'),
+('12312313wb', '1234567890', 56, '', 300, '2017-10-16', '00:03:00', '2017-11-02', 'tersedia'),
+('12345678', '10114280', 14, '', 300, '2017-10-05', '02:04:00', '2017-11-17', 'tidak tersedia'),
+('2', '1', 15, 'Packed Red Cells', 300, '2017-10-04', '00:00:00', '2017-10-05', 'tidak tersedia'),
+('3', '1', 16, 'Thrombocyt Concentrate', 300, '2017-10-04', '00:00:00', '2017-10-13', 'tidak tersedia'),
+('41231241', '1234567890', 54, 'Thrombocyt Concentrate', 300, '2017-10-12', '02:03:00', '2017-10-13', 'tidak tersedia');
 
 -- --------------------------------------------------------
 
@@ -135,8 +191,14 @@ CREATE TABLE `pendonor` (
 --
 
 INSERT INTO `pendonor` (`PENDONOR_ID`, `NAMA`, `ALAMAT`, `NO_TELEPON`, `JENIS_KELAMIN`, `TEMPAT_LAHIR`, `TANGGAL_LAHIR`, `GOLONGAN_DARAH`, `KELURAHAN`, `KECAMATAN`, `RT_RW`, `KODE_POS`, `PEKERJAAN`) VALUES
-('0', '', '', '', '', '', '0000-00-00', '', '', '', '/', 0, ''),
-('11115', 'reyhan', 'riung bandung', '085737953188', 'wanita', 'bandung', '2017-10-06', 'AB+', 'cipamokolan', 'cipamokolan', '2/2', 40292, 'mahasiswa/pelajar');
+('1', 'seillla', '1', '1', 'pria', '1', '2017-10-16', 'AB+', '1', '1', '1/1', 1, 'tni'),
+('10114280', 'gevin', 'riung bandung', '085737953188', 'pria', 'bandung', '2017-10-06', 'AB-', 'cipamokolan', 'cipamokolan', '03/04', 40292, 'mahasiswa/pelajar'),
+('1234567890', 'Aldi', 'jalan saluyu', '089754836374', 'pria', 'bandung', '1992-06-09', 'B+', 'cipamokolan', 'rancasari', '09/02', 40292, 'mahasiswa/pelajar'),
+('2', 'B+', '2', '2', 'pria', '2', '2017-10-16', 'B+', '2', '2', '2/2', 2, 'tni'),
+('3', 'B-', '3', '3', 'pria', '3', '2017-10-16', 'B-', '3', '3', '3/3', 3, 'tni'),
+('4', 'A-', '4', '4', 'pria', '4', '2017-10-10', 'A-', '4', '4', '4/4', 4, 'tni'),
+('5', 'O+', '5', '5', 'pria', '5', '2017-10-20', 'O+', '5', '5', '5/5', 5, 'tni'),
+('6', 'O-', '6', '6', 'pria', '6', '2017-10-21', 'O-', '6', '6', '6/6', 6, 'tni');
 
 -- --------------------------------------------------------
 
@@ -182,7 +244,8 @@ INSERT INTO `permintaan_transfusi` (`PERMINTAAN_ID`, `RUMAH_SAKIT_ID`, `BAGIAN`,
 (3, 1, 'Onkologi', 'Maria', 'hugo', 'Ca Cx', 'Anemia', '3', 11395670, 'eca', 22, 'pria', 'Jalan Suryalaya I no.239 Buah Batu Bandung', 'A+', 'Thrombocyt Concentrate', 'manual', 3, '2017-10-05', '01:09:00', 'segera', '2017-11-18', 3, '-', '-', '-'),
 (4, 1, 'Onkologi', 'Maria', 'Dr Dede Sulaeman', 'Ca Cx', 'Anemia', '9,6', 11395680, 'ecapedeh', 46, 'pria', 'Jalan Suryalaya I no.239 Buah Batu Bandung', 'A+', 'Fresh Frozen Plasma', 'manual', 2, '2017-10-15', '03:10:00', 'segera', '2017-10-15', 0, '-', '-', '-'),
 (5, 1, 'onkologi', 'maria', 'seilla', 'ca paru ', 'anemia', '12,0', 112343, 'siapa aja', 23, 'pria', 'jalan saluyu 15 b', 'A+', 'Fresh Frozen Plasma', 'manual', 1, '2017-10-16', '21:22:00', 'segera', '0000-00-00', 0, '', '', ''),
-(6, 1, 'SDA', 'SADA', 'SADASD', 'DASDA', 'SDAD', '2,2', 123123, 'DASDA', 0, 'pria', 'ASDASD', 'A+', 'Liquid Plasma', 'manual', 1, '2017-10-16', '23:23:00', 'segera', '0000-00-00', 0, '', '', '');
+(6, 1, 'SDA', 'SADA', 'SADASD', 'DASDA', 'SDAD', '2,2', 123123, 'DASDA', 0, 'pria', 'ASDASD', 'A+', 'Liquid Plasma', 'manual', 1, '2017-10-16', '23:23:00', 'segera', '0000-00-00', 0, '', '', ''),
+(8, 1, 'Onkologi', 'Maria', 'Dr Dede Sulaeman', 'Ca Cx', 'Anemia', '9,6', 11395680, 'reyhan audian dwi putra', 46, 'wanita', 'Jalan Suryalaya I no.239 Buah Batu Bandung', 'AB+', 'Thrombocyt Concentrate', 'manual', 1, '2017-10-16', '09:08:00', 'segera', '0000-00-00', 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -203,7 +266,7 @@ CREATE TABLE `petugas_pmi` (
 --
 
 INSERT INTO `petugas_pmi` (`PETUGAS_PMI_ID`, `NAMA`, `EMAIL`, `PASSWORD`, `USERNAME`) VALUES
-(1, 'reyhan', 'reyhanadp@yahoo.co.id', 'lalilulelo', 'reyhanadp');
+(1, 'Seilla', 'reyhanadp@yahoo.co.id', 'lalilulelo', 'seilla');
 
 -- --------------------------------------------------------
 
@@ -217,6 +280,13 @@ CREATE TABLE `riwayat_donor` (
   `ALAMAT` varchar(200) DEFAULT NULL,
   `TANGGAL` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `riwayat_donor`
+--
+
+INSERT INTO `riwayat_donor` (`ID_RIWAYAT_DONOR`, `PENDONOR_ID`, `ALAMAT`, `TANGGAL`) VALUES
+(6, '1234567890', 'jalan mana aja', '2017-10-16');
 
 -- --------------------------------------------------------
 
@@ -266,22 +336,21 @@ INSERT INTO `status_permintaan` (`ID_STATUS_PERMINTAAN`, `PETUGAS_PMI_ID`, `PERM
 (1, NULL, 1, NULL, 'menunggu diproses', '20:15:59', '2017-10-13'),
 (3, NULL, 2, NULL, 'menunggu diproses', '12:56:43', '2017-10-15'),
 (15, NULL, 3, NULL, 'menunggu diproses', '17:14:37', '2017-10-14'),
-(39, 1, 3, NULL, 'diproses', '11:18:45', '2017-10-15'),
-(40, 1, 3, '113', 'selesai', '11:19:39', '2017-10-15'),
-(41, 1, 3, '114', 'selesai', '11:19:39', '2017-10-15'),
-(42, 1, 3, '115', 'selesai', '11:19:40', '2017-10-15'),
 (43, NULL, 4, NULL, 'menunggu diproses', '12:13:07', '2017-10-15'),
 (44, 1, 4, NULL, 'diproses', '12:13:40', '2017-10-15'),
-(45, 1, 4, '111', 'selesai', '12:22:18', '2017-10-15'),
-(46, 1, 4, '114', 'selesai', '12:22:18', '2017-10-15'),
 (47, 1, 2, NULL, 'diproses', '13:17:46', '2017-10-15'),
 (48, NULL, 2, NULL, 'dibatalkan', '13:28:16', '2017-10-15'),
-(51, 1, 1, NULL, 'stok habis', '13:59:15', '2017-10-15'),
 (52, NULL, 4, NULL, 'dibatalkan', '14:00:59', '2017-10-15'),
 (53, NULL, 5, NULL, 'menunggu diproses', '14:02:17', '2017-10-15'),
 (55, 1, 5, NULL, 'diproses', '14:04:22', '2017-10-15'),
 (59, NULL, 5, NULL, 'dibatalkan', '14:06:01', '2017-10-15'),
-(60, NULL, 6, NULL, 'menunggu diproses', '14:07:29', '2017-10-15');
+(60, NULL, 6, NULL, 'menunggu diproses', '14:07:29', '2017-10-15'),
+(69, 1, 3, NULL, 'diproses', '17:55:11', '2017-10-16'),
+(70, 1, 6, NULL, 'diproses', '17:58:34', '2017-10-16'),
+(71, NULL, 8, NULL, 'menunggu diproses', '18:03:44', '2017-10-16'),
+(72, 1, 8, NULL, 'diproses', '18:04:05', '2017-10-16'),
+(73, 1, 1, NULL, 'diproses', '18:06:03', '2017-10-16'),
+(74, 1, 8, '41231241', 'selesai', '20:40:10', '2017-10-16');
 
 --
 -- Indexes for dumped tables
@@ -364,22 +433,22 @@ ALTER TABLE `status_permintaan`
 -- AUTO_INCREMENT for table `gol_darah`
 --
 ALTER TABLE `gol_darah`
-  MODIFY `ID_GOLONGAN_DARAH` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_GOLONGAN_DARAH` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `permintaan_transfusi`
 --
 ALTER TABLE `permintaan_transfusi`
-  MODIFY `PERMINTAAN_ID` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `PERMINTAAN_ID` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `riwayat_donor`
 --
 ALTER TABLE `riwayat_donor`
-  MODIFY `ID_RIWAYAT_DONOR` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_RIWAYAT_DONOR` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `status_permintaan`
 --
 ALTER TABLE `status_permintaan`
-  MODIFY `ID_STATUS_PERMINTAAN` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `ID_STATUS_PERMINTAAN` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -420,7 +489,7 @@ ALTER TABLE `riwayat_donor`
 --
 ALTER TABLE `status_permintaan`
   ADD CONSTRAINT `FK_RELATIONSHIP_13` FOREIGN KEY (`PETUGAS_PMI_ID`) REFERENCES `petugas_pmi` (`PETUGAS_PMI_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_kantong_status` FOREIGN KEY (`KODE_BARCODE`) REFERENCES `kantong_darah` (`KODE_BARCODE`),
+  ADD CONSTRAINT `FK_kantong_status` FOREIGN KEY (`KODE_BARCODE`) REFERENCES `kantong_darah` (`KODE_BARCODE`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_permintaan_status` FOREIGN KEY (`PERMINTAAN_ID`) REFERENCES `permintaan_transfusi` (`PERMINTAAN_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

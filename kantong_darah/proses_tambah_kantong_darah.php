@@ -32,7 +32,7 @@
 		$result_tambah_kantong = mysqli_query($link,$query_tambah_kantong);
 		
 	}else if($ketemu>0){
-		$query_tambah_kantong = "insert into kantong_darah value('$kode_barcode','$id_pendonor','".$data_gol_darah['ID_GOLONGAN_DARAH']."','$volume','$tanggal_pengambilan','$waktu_pengambilan','$tanggal_kadaluarsa','tersedia')";
+		$query_tambah_kantong = "insert into kantong_darah value('$kode_barcode','$id_pendonor','".$data_gol_darah['ID_GOLONGAN_DARAH']."','$jenis_darah','$volume','$tanggal_pengambilan','$waktu_pengambilan','$tanggal_kadaluarsa','tersedia')";
 		$result_tambah_kantong = mysqli_query($link,$query_tambah_kantong);
 
 		$stok_darah = $data_gol_darah['STOK_DARAH'] + 1;

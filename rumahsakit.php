@@ -7,7 +7,7 @@ $action = $_GET['action'];
 
 ?>
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="rumahsakit.php?menu=profile&action=tampil">Aplikasi Permintaan Transfusi Darah</a>
+	<a class="navbar-brand" href="rumahsakit.php?menu=profile&action=tampil">Unit Donor Darah PMI Kota Bandung</a>
 	<form role="search" class="navbar-form navbar-right" action="logout.php" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<button type="submit" name="tombol" class="btn btn-primary"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</button>
@@ -35,7 +35,7 @@ $action = $_GET['action'];
 				if(($menu=='profile')&&($action=='tampil')){
 					require('profile_rumah_sakit.php');
 				}else if(($menu=='beranda')&&($action=='tampil')){
-					require('beranda_rumah_sakit.php');
+					require('beranda.php');
 				}else if(($menu=='permintaan')&&($action=='tampil')){
 					require('permintaan.php');
 				}else if(($menu=='permintaan')&&($action=='tambah')){

@@ -8,7 +8,7 @@ $action = $_GET['action'];
 
 ?>
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="petugas.php?menu=profile&action=tampil">Aplikasi Permintaan Transfusi Darah</a>
+	<a class="navbar-brand" href="petugas.php?menu=profile&action=tampil">Unit Donor Darah PMI Kota Bandung</a>
 	<form role="search" class="navbar-form navbar-right" action="logout.php" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<button type="submit" name="tombol" class="btn btn-primary"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</button>
@@ -30,27 +30,26 @@ $action = $_GET['action'];
 				}elseif($menu=='pendonor'){
 					require('pendonor\menu_pendonor_petugas.php');
 				}elseif($menu=='formulir'){
-					require('menu_formulir_petugas.php');
+					require('formulir_bdrs\menu_formulir_petugas.php');
 				}elseif($menu=='kegiatan_donor'){
 					require('menu_kegiatan_donor_petugas.php');
 				}
 			?>
-			
-
 		</div>
-
 		<div class="col-md-10">
 			<?php
 				if(($menu=='profile')&&($action=='tampil')){
 					require('profile_rumah_sakit.php');
 				}else if(($menu=='beranda')&&($action=='tampil')){
-					require('beranda_rumah_sakit.php');
+					require('beranda.php');
 				}else if(($menu=='permintaan')&&($action=='tampil')){
 					require('permintaan_petugas.php');
 				}else if(($menu=='kantong_darah')&&($action=='tampil')){
 					require('kantong_darah\kantong_darah.php');
 				}else if(($menu=='kantong_darah')&&($action=='tambah')){
 					require('kantong_darah\tambah_kantong_darah.php');
+				}else if(($menu=='kantong_darah')&&($action=='ubah')){
+					require('kantong_darah\ubah_kantong_darah.php');
 				}else if(($menu=='pendonor')&&($action=='tampil')){
 					require('pendonor\pendonor_petugas.php');
 				}else if(($menu=='pendonor')&&($action=='tambah')){
@@ -59,6 +58,10 @@ $action = $_GET['action'];
 					require('pendonor\lihat_pendonor.php');
 				}else if(($menu=='pendonor')&&($action=='ubah')){
 					require('pendonor\ubah_pendonor.php');
+				}else if(($menu=='formulir')&&($action=='tampil')){
+					require('formulir_bdrs\formulir_bdrs.php');
+				}else if(($menu=='formulir')&&($action=='tambah')){
+					require('formulir_bdrs\tambah_formulir_bdrs.php');
 				}
 			?>
 		</div>

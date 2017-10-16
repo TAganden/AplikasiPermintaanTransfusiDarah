@@ -24,12 +24,16 @@ if($ketemu>0){
 		$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'diproses',CURTIME(),CURDATE())";
 		$res_status = mysqli_query($link,$sql_status);
 
-		$sql_ubah_stok = "update gol_darah set stok_darah='$stok_baru' where golongan_darah='$gol_darah' and jenis_darah='$jenis_darah'";
-		$res_ubah_stok = mysqli_query($link,$sql_ubah_stok);
+//		$sql_ubah_stok = "update gol_darah set stok_darah='$stok_baru' where golongan_darah='$gol_darah' and jenis_darah='$jenis_darah'";
+//		$res_ubah_stok = mysqli_query($link,$sql_ubah_stok);
+		
+		$_SESSION['s_pesan'] = "Golongan darah yang akan diproses ".$gol_darah1." dengan jenis darah ".$jenis_darah1;
 		
 	}elseif($stok_baru<0){
 		$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
 		$res_status = mysqli_query($link,$sql_status);
+		
+		$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 	}
 	
 	
@@ -65,72 +69,13 @@ if($ketemu>0){
 								require('query_darah.php');
 			
 								if($ketemu==0){
-									$gol_darah="AB+";
-									$jenis_darah="Whole Blood";
-									require('query_darah.php');
-			
-									if($ketemu==0){
-										$gol_darah="AB-";
-										$jenis_darah="Whole Blood";
-										require('query_darah.php');
-			
-										if($ketemu==0){
-											$gol_darah="B+";
-											$jenis_darah="Whole Blood";
-											require('query_darah.php');
-			
-											if($ketemu==0){
-												$gol_darah="B-";
-												$jenis_darah="Whole Blood";
-												require('query_darah.php');
-
-												if($ketemu==0){
-													$gol_darah="A+";
-													$jenis_darah="Whole Blood";
-													require('query_darah.php');
-
-													if($ketemu==0){
-														$gol_darah="A-";
-														$jenis_darah="Whole Blood";
-														require('query_darah.php');
-
-														if($ketemu==0){
-															$gol_darah="O+";
-															$jenis_darah="Whole Blood";
-															require('query_darah.php');
-
-															if($ketemu==0){
-																$gol_darah="O-";
-																$jenis_darah="Whole Blood";
-																require('query_darah.php');
+									$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+									$res_status = mysqli_query($link,$sql_status);
 																	
-																if($ketemu==0){
-																	$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-																	$res_status = mysqli_query($link,$sql_status);
-																	
-																	$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-																	$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-																}elseif($ketemu>0){
-																	require('query_diproses_berhasil.php');
-																}
-															}elseif($ketemu>0){
-																require('query_diproses_berhasil.php');
-															}
-														}elseif($ketemu>0){
-															require('query_diproses_berhasil.php');
-														}
-													}elseif($ketemu>0){
-														require('query_diproses_berhasil.php');
-													}
-												}elseif($ketemu>0){
-													require('query_diproses_berhasil.php');
-												}
-											}elseif($ketemu>0){
-												require('query_diproses_berhasil.php');
-											}
-										}elseif($ketemu>0){
-											require('query_diproses_berhasil.php');
-										}
+									$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+									$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+											
+									$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 									}elseif($ketemu>0){
 										require('query_diproses_berhasil.php');
 									}
@@ -152,9 +97,6 @@ if($ketemu>0){
 			}elseif($ketemu>0){
 				require('query_diproses_berhasil.php');
 			}
-		}elseif($ketemu>0){
-			require('query_diproses_berhasil.php');
-		}
 	}else if($gol_darah1=="AB-"){
 
 		$gol_darah="B-";
@@ -169,43 +111,13 @@ if($ketemu>0){
 				require('query_darah.php');
 			
 				if($ketemu==0){
-					$gol_darah="AB-";
-					$jenis_darah="Whole Blood";
-					require('query_darah.php');
-			
-					if($ketemu==0){
-						$gol_darah="B-";
-						$jenis_darah="Whole Blood";
-						require('query_darah.php');
-
-						if($ketemu==0){
-							$gol_darah="A-";
-							$jenis_darah="Whole Blood";
-							require('query_darah.php');
-
-							if($ketemu==0){
-								$gol_darah="O-";
-								$jenis_darah="Whole Blood";
-								require('query_darah.php');
-			
-								if($ketemu==0){
-									$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-									$res_status = mysqli_query($link,$sql_status);
+					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+					$res_status = mysqli_query($link,$sql_status);
 									
-									$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-									$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-								}elseif($ketemu>0){
-									require('query_diproses_berhasil.php');
-								}
-							}elseif($ketemu>0){
-								require('query_diproses_berhasil.php');
-							}
-						}elseif($ketemu>0){
-							require('query_diproses_berhasil.php');
-						}
-					}elseif($ketemu>0){
-						require('query_diproses_berhasil.php');
-					}
+					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+					
+					$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 				}elseif($ketemu>0){
 					require('query_diproses_berhasil.php');
 				}
@@ -228,43 +140,13 @@ if($ketemu>0){
 				require('query_darah.php');
 			
 				if($ketemu==0){
-					$gol_darah="B+";
-					$jenis_darah="Whole Blood";
-					require('query_darah.php');
-			
-					if($ketemu==0){
-						$gol_darah="B-";
-						$jenis_darah="Whole Blood";
-						require('query_darah.php');
-
-						if($ketemu==0){
-							$gol_darah="O+";
-							$jenis_darah="Whole Blood";
-							require('query_darah.php');
-
-							if($ketemu==0){
-								$gol_darah="O-";
-								$jenis_darah="Whole Blood";
-								require('query_darah.php');
-			
-								if($ketemu==0){
-									$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-									$res_status = mysqli_query($link,$sql_status);
+					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+					$res_status = mysqli_query($link,$sql_status);
 									
-									$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-									$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-								}elseif($ketemu>0){
-									require('query_diproses_berhasil.php');
-								}
-							}elseif($ketemu>0){
-								require('query_diproses_berhasil.php');
-							}
-						}elseif($ketemu>0){
-							require('query_diproses_berhasil.php');
-						}
-					}elseif($ketemu>0){
-						require('query_diproses_berhasil.php');
-					}
+					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+					
+					$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 				}elseif($ketemu>0){
 					require('query_diproses_berhasil.php');
 				}
@@ -279,27 +161,13 @@ if($ketemu>0){
 		require('query_darah.php');
 		
 		if($ketemu==0){
-			$gol_darah="B-";
-			$jenis_darah="Whole Blood";
-			require('query_darah.php');
-			
-			if($ketemu==0){
-				$gol_darah="O-";
-				$jenis_darah="Whole Blood";
-				require('query_darah.php');
-			
-				if($ketemu==0){
-					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-					$res_status = mysqli_query($link,$sql_status);
+			$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+			$res_status = mysqli_query($link,$sql_status);
 					
-					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-				}elseif($ketemu>0){
-					require('query_diproses_berhasil.php');
-				}
-			}elseif($ketemu>0){
-				require('query_diproses_berhasil.php');
-			}
+			$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+			$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+			
+			$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 		}elseif($ketemu>0){
 			require('query_diproses_berhasil.php');
 		}
@@ -316,43 +184,13 @@ if($ketemu>0){
 				require('query_darah.php');
 			
 				if($ketemu==0){
-					$gol_darah="A+";
-					$jenis_darah="Whole Blood";
-					require('query_darah.php');
-			
-					if($ketemu==0){
-						$gol_darah="A-";
-						$jenis_darah="Whole Blood";
-						require('query_darah.php');
-
-						if($ketemu==0){
-							$gol_darah="O+";
-							$jenis_darah="Whole Blood";
-							require('query_darah.php');
-
-							if($ketemu==0){
-								$gol_darah="O-";
-								$jenis_darah="Whole Blood";
-								require('query_darah.php');
-			
-								if($ketemu==0){
-									$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-									$res_status = mysqli_query($link,$sql_status);
+					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+					$res_status = mysqli_query($link,$sql_status);
 									
-									$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-									$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-								}elseif($ketemu>0){
-									require('query_diproses_berhasil.php');
-								}
-							}elseif($ketemu>0){
-								require('query_diproses_berhasil.php');
-							}
-						}elseif($ketemu>0){
-							require('query_diproses_berhasil.php');
-						}
-					}elseif($ketemu>0){
-						require('query_diproses_berhasil.php');
-					}
+					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+					
+					$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 				}elseif($ketemu>0){
 					require('query_diproses_berhasil.php');
 				}
@@ -367,27 +205,13 @@ if($ketemu>0){
 		require('query_darah.php');
 		
 		if($ketemu==0){
-			$gol_darah="A-";
-			$jenis_darah="Whole Blood";
-			require('query_darah.php');
-			
-			if($ketemu==0){
-				$gol_darah="O-";
-				$jenis_darah="Whole Blood";
-				require('query_darah.php');
-			
-				if($ketemu==0){
-					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-					$res_status = mysqli_query($link,$sql_status);
+			$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+			$res_status = mysqli_query($link,$sql_status);
 					
-					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-				}elseif($ketemu>0){
-					require('query_diproses_berhasil.php');
-				}
-			}elseif($ketemu>0){
-				require('query_diproses_berhasil.php');
-			}
+			$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+			$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+			
+			$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 		}elseif($ketemu>0){
 			require('query_diproses_berhasil.php');
 		}
@@ -396,27 +220,13 @@ if($ketemu>0){
 		require('query_darah.php');
 		
 		if($ketemu==0){
-			$gol_darah="O+";
-			$jenis_darah="Whole Blood";
-			require('query_darah.php');
-			
-			if($ketemu==0){
-				$gol_darah="O-";
-				$jenis_darah="Whole Blood";
-				require('query_darah.php');
-			
-				if($ketemu==0){
-					$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-					$res_status = mysqli_query($link,$sql_status);
+			$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+			$res_status = mysqli_query($link,$sql_status);
 					
-					$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-					$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-				}elseif($ketemu>0){
-					require('query_diproses_berhasil.php');
-				}
-			}elseif($ketemu>0){
-				require('query_diproses_berhasil.php');
-			}
+			$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+			$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+			
+			$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 		}elseif($ketemu>0){
 			require('query_diproses_berhasil.php');
 		}
@@ -425,24 +235,18 @@ if($ketemu>0){
 		require('query_darah.php');
 		
 		if($ketemu==0){
-			$gol_darah="O-";
-			$jenis_darah="Whole Blood";
-			require('query_darah.php');
-			
-			if($ketemu==0){
-				$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
-				$res_status = mysqli_query($link,$sql_status);
+			$sql_status = "insert into status_permintaan value(NULL,'".$_SESSION['s_petugas_id']."','$id',NULL,'stok habis',CURTIME(),CURDATE())";
+			$res_status = mysqli_query($link,$sql_status);
 				
-				$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
-				$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
-			}elseif($ketemu>0){
-				require('query_diproses_berhasil.php');
-			}
+			$sql_update_permintaan = "update permintaan_transfusi set golongan_darah='$gol_darah1', jenis_darah='$jenis_darah1' where permintaan_id='$id'";
+			$res_update_permintaan = mysqli_query($link,$sql_update_permintaan);
+			
+			$_SESSION['s_pesan'] = "Stok golongan darah ".$gol_darah1." dengan jenis ".$jenis_darah1." tidak tersedia";
 		}elseif($ketemu>0){
 			require('query_diproses_berhasil.php');
 		}
 	}
-	
-	echo ("<script> location.href ='petugas.php?menu=permintaan&action=tampil';</script>");
 }
+	echo ("<script> location.href ='petugas.php?menu=permintaan&action=tampil';</script>");
+
 ?>

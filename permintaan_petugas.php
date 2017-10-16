@@ -7,7 +7,7 @@ $res = mysqli_query( $link, $query_permintaan );
 
 $no = 0;
 ?>
-<h4>Permintaan Transfusi Darah</h4>
+<h3>Permintaan Transfusi Darah</h3>
 
 
 <br>
@@ -17,13 +17,25 @@ if ( isset( $_SESSION[ 's_pesan' ] ) ) {
 	?>
 <div class="alert alert-warning alert-dismissible fade in" role="alert">
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-	<strong>Gagal!</strong>
+	<strong>Warning! </strong>
 	<?php echo $_SESSION['s_pesan'];
 	unset($_SESSION['s_pesan']);?>
 </div>
 <?php
 }
 ?>
+<div class="col-md-8">
+</div>
+<form enctype="multipart/form-data" method="post" action="rumahsakit.php?menu=permintaan&action=tampil">
+	<div class="col-md-3">
+		<input type="text" name="cari" placeholder="Cari . . ." class="form-control">
+	</div>
+	<div class="col-md-1">
+		<input type="submit" name="submit" value="Cari" class="form-control">
+	</div>
+</form><br>
+<br>
+
 <table class="table table-bordered table-striped">
 	<tr>
 		<td class="col-md-1">
@@ -443,7 +455,11 @@ if ( isset( $_SESSION[ 's_pesan' ] ) ) {
 								}
 								?>
 							</table>
+							<form enctype="multipart/form-data" method="post" action="proses_permintaan_selesai_petugas.php?id=<?php echo $data['PERMINTAAN_ID']; ?>&jumlah=<?php echo $data['JUMLAH']; ?>">
 							<?php
+				
+							
+								
 							while ( $no_barcode < $data[ 'JUMLAH' ] ) {
 								$no_barcode++;
 
@@ -455,7 +471,7 @@ if ( isset( $_SESSION[ 's_pesan' ] ) ) {
 								<strong>:</strong>
 							</div>
 							<div class="col-md-6">
-								<form enctype="multipart/form-data" method="post" action="proses_permintaan_selesai_petugas.php?id=<?php echo $data['PERMINTAAN_ID']; ?>&jumlah=<?php echo $data['JUMLAH']; ?>">
+								
 
 									<input type="text" class="typeahead form-control" required="required" name="barcode<?php echo $no_barcode; ?>" placeholder="Barcode">
 
@@ -467,7 +483,7 @@ if ( isset( $_SESSION[ 's_pesan' ] ) ) {
 								/*autocomplete muncul setelah user mengetikan minimal2 karakter */
 								$('input.typeahead').typeahead({
 									source: function (query,process){
-										return $.get('proses_autocomplete_barcode.php',{
+										return $.get('proses_autocomplete_barcode.php?id=<?php echo $data['PERMINTAAN_ID']; ?>',{
 												query: query
 											},
 											function (data) {

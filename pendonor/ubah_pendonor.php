@@ -50,7 +50,7 @@
 					Golongan Darah
 				</td>
 				<td class="col-md-4">
-					<select name="golongan_darah" class="form-control">
+					<select name="golongan_darah" class="form-control" disabled>
 						<option value="A+" <?php if($data_pendonor['GOLONGAN_DARAH']=="A+") echo 'selected="selected"'; ?>>A+</option>
 						<option value="A-" <?php if($data_pendonor['GOLONGAN_DARAH']=="A-") echo 'selected="selected"'; ?>>A-</option>
 						<option value="B+" <?php if($data_pendonor['GOLONGAN_DARAH']=="B+") echo 'selected="selected"'; ?>>B+</option>
