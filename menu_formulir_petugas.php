@@ -1,9 +1,9 @@
 
 			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation" >
+				<li role="presentation">
 					<a href="petugas.php?menu=profile&action=tampil"><?php echo $_SESSION['s_nama']; ?></a>
 				</li>
-				<li role="presentation" class="active">
+				<li role="presentation">
 					<a href="petugas.php?menu=beranda&action=tampil">Beranda</a>
 				</li>
 				<li role="presentation">
@@ -15,7 +15,7 @@
 				<li role="presentation">
 					<a href="petugas.php?menu=pendonor&action=tampil">Pendonor</a>
 				</li>
-				<li role="presentation">
+				<li role="presentation" class="active">
 					<a href="petugas.php?menu=formulir&action=tampil">Formulir BDRS</a>
 				</li>
 				<li role="presentation">

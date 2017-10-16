@@ -1,7 +1,7 @@
 <?php
 require( 'koneksi.php' );
 $link = koneksi_db();
-$query_permintaan = "select * from permintaan_transfusi where rumah_sakit_id='" . $_SESSION[ 's_rumah_sakit_id' ] . "'";
+$query_permintaan = "select * from permintaan_transfusi where rumah_sakit_id='" . $_SESSION[ 's_rumah_sakit_id' ] . "' order by permintaan_id desc";
 $res = mysqli_query( $link, $query_permintaan );
 
 $no = 0;

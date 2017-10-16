@@ -4,6 +4,9 @@ require('koneksi.php');
 $link = koneksi_db();
 $id = $_GET['id'];
 
+$query_hapus_status = "delete from status_permintaan where permintaan_id='$id' and nama='stok habis'";
+$result_hapus_status = mysqli_query($link,$query_hapus_status);
+
 
 //mengambil data permintaan
 $sql_permintaan = "select * from permintaan_transfusi where permintaan_id=$id";

@@ -55,12 +55,23 @@ if(!empty($_POST['bagian'])){
 	$result = mysqli_query($link,$query_permintaan);
 	
 	$query_status = "select * from status_permintaan where permintaan_id='" . $id . "'";
-	$result = mysqli_query( $link, $query_status );
-	while ( $data_status = mysqli_fetch_array( $result ) ) {
+	$result_status = mysqli_query( $link, $query_status );
+	while ( $data_status = mysqli_fetch_array( $result_status ) ) {
 		$id_status = $data_status['ID_STATUS_PERMINTAAN'];
+		$status = $data_status['NAMA'];
 	}
 	
-		$query_update_status = "update status_permintaan set waktu=curtime(),tanggal=curdate() where id_status_permintaan ='$id_status'";
+	if($status!="menunggu diproses"){
+		$query_delete = "delete from status_permintaan where id_status_permintaan='$id_status'";
+		$result_delete = mysqli_query($link,$query_delete);
+		
+	}
+	
+	$query_status = "select * from status_permintaan where permintaan_id='" . $id . "' and nama='menunggu diproses'";
+	$result_status1 = mysqli_query( $link, $query_status );
+	$data_status1 = mysqli_fetch_array($result_status1);
+	
+	$query_update_status = "update status_permintaan set waktu=curtime(),tanggal=curdate() where id_status_permintaan ='".$data_status1['ID_STATUS_PERMINTAAN']."'";
 	$res=mysqli_query($link,$query_update_status);
 	
 	

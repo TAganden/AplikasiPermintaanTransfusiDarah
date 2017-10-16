@@ -23,10 +23,16 @@ $action = $_GET['action'];
 					require('menu_profile_petugas.php');
 				}else if(($menu=='beranda')){
 					require('menu_beranda_petugas.php');
-				}else if(($menu=='data')){
-					require('menu_data_petugas.php');
 				}else if(($menu=='permintaan')){
 					require('menu_permintaan_petugas.php');
+				}elseif($menu=='kantong_darah'){
+					require('kantong_darah\menu_kantong_darah_petugas.php');
+				}elseif($menu=='pendonor'){
+					require('pendonor\menu_pendonor_petugas.php');
+				}elseif($menu=='formulir'){
+					require('menu_formulir_petugas.php');
+				}elseif($menu=='kegiatan_donor'){
+					require('menu_kegiatan_donor_petugas.php');
 				}
 			?>
 			
@@ -41,10 +47,18 @@ $action = $_GET['action'];
 					require('beranda_rumah_sakit.php');
 				}else if(($menu=='permintaan')&&($action=='tampil')){
 					require('permintaan_petugas.php');
-				}else if(($menu=='permintaan')&&($action=='tambah')){
-					require('tambah_permintaan.php');
-				}else if(($menu=='permintaan')&&($action=='ubah')){
-					require('ubah_permintaan.php');
+				}else if(($menu=='kantong_darah')&&($action=='tampil')){
+					require('kantong_darah\kantong_darah.php');
+				}else if(($menu=='kantong_darah')&&($action=='tambah')){
+					require('kantong_darah\tambah_kantong_darah.php');
+				}else if(($menu=='pendonor')&&($action=='tampil')){
+					require('pendonor\pendonor_petugas.php');
+				}else if(($menu=='pendonor')&&($action=='tambah')){
+					require('pendonor\tambah_pendonor_petugas.php');
+				}else if(($menu=='pendonor')&&($action=='lihat')){
+					require('pendonor\lihat_pendonor.php');
+				}else if(($menu=='pendonor')&&($action=='ubah')){
+					require('pendonor\ubah_pendonor.php');
 				}
 			?>
 		</div>

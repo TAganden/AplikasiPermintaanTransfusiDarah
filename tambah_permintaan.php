@@ -193,18 +193,6 @@
 				<option value="Cryoprecipitate">Cryoprecipitate</option>
 				<option value="Washed Red Cells">Washed Red Cells</option>
 				<option value="Buffy Coat">Buffy Coat</option>
-<!--
-
-				<?php
-					$query = "select jenis_darah from gol_darah";
-					$result = mysqli_query($link,$query);
-					while($data = mysqli_fetch_array($result)){
-						echo "<option value=".$data['jenis_darah'].">".$data['jenis_darah']."</option>";
-					}
-				?>
--->
-
-				
 			</select>
 		</td>
 	</tr>
