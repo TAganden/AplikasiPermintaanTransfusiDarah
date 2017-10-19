@@ -32,7 +32,7 @@ $action = $_GET['action'];
 				}elseif($menu=='formulir'){
 					require('formulir_bdrs\menu_formulir_petugas.php');
 				}elseif($menu=='kegiatan_donor'){
-					require('menu_kegiatan_donor_petugas.php');
+					require('kegiatan_donor/menu_kegiatan_donor_petugas.php');
 				}
 			?>
 		</div>
@@ -62,6 +62,10 @@ $action = $_GET['action'];
 					require('formulir_bdrs\formulir_bdrs.php');
 				}else if(($menu=='formulir')&&($action=='tambah')){
 					require('formulir_bdrs\tambah_formulir_bdrs.php');
+				}else if(($menu=='kegiatan_donor')&&($action=='tampil')){
+					require('kegiatan_donor\kegiatan_donor.php');
+				}else if(($menu=='kegiatan_donor')&&($action=='tambah')){
+					require('kegiatan_donor\tambah_kegiatan_donor.php');
 				}
 			?>
 		</div>

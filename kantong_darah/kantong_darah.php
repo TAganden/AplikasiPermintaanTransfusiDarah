@@ -8,7 +8,7 @@ $link = koneksi_db();
 
 <form enctype="multipart/form-data" method="post" action="petugas.php?menu=kantong_darah&action=tambah">
 	<button type="submit" class="btn btn-default">
-		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Tambah Data Pendonor
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Tambah Data Kantong Darah
 	</button>
 
 

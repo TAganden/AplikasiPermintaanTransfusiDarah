@@ -1,7 +1,7 @@
 <h3>Tambah Formulir BDRS</h3>
 <div class="row-fluid">
 	<div class="span6">
-		<form action="index.php" method="post">
+		<form action="petugas.php?menu=formulir&action=tambah" method="post">
 			<table class="table table-condensed">
 				<thead>
 					<tr>

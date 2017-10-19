@@ -33,7 +33,7 @@
 			else
 			{
 				$_SESSION['s_pesan'] = "Email atau Password Salah";
-				echo ("<script> location.href ='index.php';</script>");
+				echo ("<script> location.href ='halaman_utama.php';</script>");
 			}
 		}else if($pilihan=="petugas"){
 			$sql="select * from petugas_pmi where username='".$_POST['username']."' and password='".$_POST['password']."'";
@@ -59,7 +59,7 @@
 			else
 			{
 				$_SESSION['s_pesan'] = "Email atau Password Salah";
-				echo ("<script> location.href ='index.php';</script>");
+				echo ("<script> location.href ='halaman_utama.php';</script>");
 			}
 		}
 		
