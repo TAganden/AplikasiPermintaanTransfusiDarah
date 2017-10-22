@@ -16,7 +16,7 @@
 			Bagian
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="bagian" class="form-control" value="<?php echo $data['BAGIAN']; ?>">
+			<input type="text" name="bagian" class="form-control" value="<?php echo $data['BAGIAN']; ?>" required>
 		</td>
 	</tr>
 </table>
@@ -30,7 +30,7 @@
 			Nama Dokter
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="nama_dokter" class="form-control" value="<?php echo $data['NAMA_DOKTER']; ?>">
+			<input type="text" name="nama_dokter" class="form-control" value="<?php echo $data['NAMA_DOKTER']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -42,7 +42,7 @@
 			Ruangan
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="ruangan" class="form-control" value="<?php echo $data['RUANGAN']; ?>">
+			<input type="text" name="ruangan" class="form-control" value="<?php echo $data['RUANGAN']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -55,7 +55,7 @@
 			Diagnosa Sementara
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="diagnosa_sementara" class="form-control" value="<?php echo $data['DIAGNOSA_SEMENTARA']; ?>">
+			<input type="text" name="diagnosa_sementara" class="form-control" value="<?php echo $data['DIAGNOSA_SEMENTARA']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -68,7 +68,7 @@
 			Indikasi Transfusi
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="indikasi_tranfusi" class="form-control" value="<?php echo $data['INDIKASI_TRANSFUSI']; ?>">
+			<input type="text" name="indikasi_tranfusi" class="form-control" value="<?php echo $data['INDIKASI_TRANSFUSI']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -81,7 +81,7 @@
 			Nama Penderita
 		</td>
 		<td class="col-md-4">
-			<input type="text" name="nama_penderita" class="form-control" value="<?php echo $data['NAMA_PASIEN']; ?>">
+			<input type="text" name="nama_penderita" class="form-control" value="<?php echo $data['NAMA_PASIEN']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -94,7 +94,7 @@
 			Nomor Register
 		</td>
 		<td class="col-md-4">
-			<input type="text" name="nomor_register" class="form-control" value="<?php echo $data['NO_REG']; ?>">
+			<input type="text" name="nomor_register" class="form-control" value="<?php echo $data['NO_REG']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -123,7 +123,7 @@
 			Umur
 		</td>
 		<td>
-			<input type="text" name="umur" class="form-control" value="<?php echo $data['UMUR_PASIEN']; ?>">
+			<input type="text" name="umur" class="form-control" value="<?php echo $data['UMUR_PASIEN']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -136,7 +136,7 @@
 			Hb
 		</td>
 		<td>
-			<input type="text" name="hb" class="form-control" value="<?php echo $data['HB']; ?>">
+			<input type="text" name="hb" class="form-control" value="<?php echo $data['HB']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -149,7 +149,7 @@
 			Alamat
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="alamat" class="form-control" value="<?php echo $data['ALAMAT']; ?>">
+			<input type="text" name="alamat" class="form-control" value="<?php echo $data['ALAMAT']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -162,7 +162,7 @@
 			Tanggal Permintaan
 		</td>
 		<td class="col-md-4">
-			<input type="date" name="tanggal_permintaan" class="form-control" value="<?php echo $data['TANGGAL']; ?>">
+			<input type="date" name="tanggal_permintaan" class="form-control" value="<?php echo $data['TANGGAL']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -175,7 +175,7 @@
 			Waktu Permintaan
 		</td>
 		<td class="col-md-4">
-			<input type="time" name="waktu_permintaan" class="form-control" value="<?php echo $data['WAKTU']; ?>">
+			<input type="time" name="waktu_permintaan" class="form-control" value="<?php echo $data['WAKTU']; ?>" required>
 		</td>
 	</tr>
 	</table>
@@ -249,7 +249,9 @@
 			Jumlah
 		</td>
 		<td class="col-md-4">
-			<input type="text" name="jumlah" class="form-control" placeholder="Unit" value="<?php echo $data['JUMLAH']; ?>">
+		<div class="input-group">
+			<input type="text" name="jumlah" class="form-control" value="<?php echo $data['JUMLAH']; ?>" required><div class="input-group-addon">Unit</div>
+			</div>
 		</td>
 	</tr>
 	</table>

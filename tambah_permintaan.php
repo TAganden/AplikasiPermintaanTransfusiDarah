@@ -12,7 +12,7 @@
 			Bagian
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="bagian" class="form-control">
+			<input type="text" name="bagian" class="form-control" required>
 		</td>
 	</tr>
 </table>
@@ -26,7 +26,7 @@
 			Nama Dokter
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="nama_dokter" class="form-control">
+			<input type="text" name="nama_dokter" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -38,7 +38,7 @@
 			Ruangan
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="ruangan" class="form-control">
+			<input type="text" name="ruangan" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -51,7 +51,7 @@
 			Diagnosa Sementara
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="diagnosa_sementara" class="form-control">
+			<input type="text" name="diagnosa_sementara" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -64,7 +64,7 @@
 			Indikasi Transfusi
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="indikasi_tranfusi" class="form-control">
+			<input type="text" name="indikasi_tranfusi" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -77,7 +77,7 @@
 			Nama Penderita
 		</td>
 		<td class="col-md-4">
-			<input type="text" name="nama_penderita" class="form-control">
+			<input type="text" name="nama_penderita" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -90,7 +90,7 @@
 			Nomor Register
 		</td>
 		<td class="col-md-4">
-			<input type="text" name="nomor_register" class="form-control">
+			<input type="text" name="nomor_register" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -119,7 +119,7 @@
 			Umur
 		</td>
 		<td>
-			<input type="text" name="umur" class="form-control">
+			<input type="text" name="umur" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -132,7 +132,7 @@
 			Hb
 		</td>
 		<td>
-			<input type="text" name="hb" class="form-control">
+			<input type="text" name="hb" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -145,7 +145,7 @@
 			Alamat
 		</td>
 		<td class="col-md-10">
-			<input type="text" name="alamat" class="form-control">
+			<input type="text" name="alamat" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -158,7 +158,7 @@
 			Tanggal Permintaan
 		</td>
 		<td class="col-md-4">
-			<input type="date" name="tanggal_permintaan" class="form-control">
+			<input type="date" name="tanggal_permintaan" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -171,7 +171,7 @@
 			Waktu Permintaan
 		</td>
 		<td class="col-md-4">
-			<input type="time" name="waktu_permintaan" class="form-control">
+			<input type="time" name="waktu_permintaan" class="form-control" required>
 		</td>
 	</tr>
 	</table>
@@ -223,7 +223,7 @@
 			Golongan Darah
 		</td>
 		<td class="col-md-4">
-			<select name="golongan_darah" class="form-control">
+			<select name="golongan_darah" class="form-control" required>
 				<option value="A+">A+</option>
 				<option value="A-">A-</option>
 				<option value="B+">B+</option>
@@ -245,7 +245,9 @@
 			Jumlah
 		</td>
 		<td class="col-md-4">
-			<input type="text" name="jumlah" class="form-control" placeholder="Unit">
+		<div class="input-group">
+			<input type="text" name="jumlah" class="form-control" required><div class="input-group-addon">Unit</div>
+		</div>
 		</td>
 	</tr>
 	</table>

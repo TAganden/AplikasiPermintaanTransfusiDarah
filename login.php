@@ -53,7 +53,7 @@
 				$_SESSION['s_email']= $email;
 				$_SESSION['s_nama']= $nama_petugas;
 				$_SESSION['s_petugas_id']= $petugas_id;
-				echo ("<script> location.href ='petugas.php?menu=profile&action=tampil';</script>");
+				echo ("<script> location.href ='petugas.php?menu=beranda&action=tampil';</script>");
 
 			}
 			else

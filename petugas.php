@@ -8,7 +8,7 @@ $action = $_GET['action'];
 
 ?>
 <nav class="navbar navbar-inverse">
-	<a class="navbar-brand" href="petugas.php?menu=profile&action=tampil">Unit Donor Darah PMI Kota Bandung</a>
+	<a class="navbar-brand" href="petugas.php?menu=beranda&action=tampil">Unit Donor Darah PMI Kota Bandung</a>
 	<form role="search" class="navbar-form navbar-right" action="logout.php" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<button type="submit" name="tombol" class="btn btn-primary"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</button>
@@ -17,11 +17,9 @@ $action = $_GET['action'];
 </nav>
 <div class="container-fluid ">
 	<div class="row">
-		<div class="col-md-2 "><br>
+		<div class="col-md-2 "><br>	
 			<?php
-				if(($menu=='profile')){
-					require('menu_profile_petugas.php');
-				}else if(($menu=='beranda')){
+				if(($menu=='beranda')){
 					require('menu_beranda_petugas.php');
 				}else if(($menu=='permintaan')){
 					require('menu_permintaan_petugas.php');
@@ -38,9 +36,7 @@ $action = $_GET['action'];
 		</div>
 		<div class="col-md-10">
 			<?php
-				if(($menu=='profile')&&($action=='tampil')){
-					require('profile_rumah_sakit.php');
-				}else if(($menu=='beranda')&&($action=='tampil')){
+				if(($menu=='beranda')&&($action=='tampil')){
 					require('beranda.php');
 				}else if(($menu=='permintaan')&&($action=='tampil')){
 					require('permintaan_petugas.php');

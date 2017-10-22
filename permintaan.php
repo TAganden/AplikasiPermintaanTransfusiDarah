@@ -16,9 +16,6 @@ $no = 0;
 <br>
 <br>
 <div class="col-md-2">
-	<form enctype="multipart/form-data" method="post" action="profile_rumah_sakit.php">
-		<input type="number" class="form-control" name="nomor" value="10" onClick="location.href ='profile_rumah_sakit.php'">
-	</form>
 </div>
 <div class="col-md-6">
 </div>
@@ -35,19 +32,19 @@ $no = 0;
 
 <table class="table table-bordered table-striped">
 	<tr>
-		<td class="col-md-1"><strong>No</strong>
+		<td class="col-md-1"><center><strong>No</strong></center>
 		</td>
-		<td class="col-md-2"><strong>Nama Pasien</strong>
+		<td class="col-md-2"><center><strong>Nama Pasien</strong></center>
 		</td>
-		<td class="col-md-2"><strong>Nama Dokter</strong>
+		<td class="col-md-2"><center><strong>Nama Dokter</strong></center>
 		</td>
-		<td class="col-md-2"><strong>Status</strong>
+		<td class="col-md-2"><center><strong>Status</strong></center>
 		</td>
-		<td class="col-md-1"><strong>Gol. Darah</strong>
+		<td class="col-md-1"><center><strong>Gol. Darah</strong></center>
 		</td>
-		<td class="col-md-2"><strong>Tanggal</strong>
+		<td class="col-md-2"><center><strong>Tanggal</strong></center>
 		</td>
-		<td class="col-md-1"><strong>Waktu</strong>
+		<td class="col-md-1"><center><strong>Waktu</strong></center>
 		</td>
 		<td class="col-md-1"></td>
 	</tr>
@@ -73,7 +70,7 @@ $no = 0;
 		?>
 	<tr>
 		<td>
-			<?php echo $no;?>
+			<center><?php echo $no;?></center>
 		</td>
 		<td>
 			<?php echo $data['NAMA_PASIEN']; ?>
@@ -82,16 +79,45 @@ $no = 0;
 			<?php echo $data['NAMA_DOKTER']; ?>
 		</td>
 		<td>
-			<?php echo $status; ?>
+			<center>
+			<?php
+				if($status=="selesai"){
+					$status="Selesai";
+			?>
+				<div class="bg-success"><?php echo $status; ?></div></center>
+			<?php		
+				}elseif($status=="dibatalkan"){
+					$status="Dibatalkan";
+			?>
+				<div class="bg-warning"><?php echo $status; ?></div></center>
+			<?php	
+				}elseif($status=="menunggu diproses"){
+					$status="Menunggu Diproses";
+			?>
+				<div class="bg-primary"><?php echo $status; ?></div></center>
+			<?php	
+				}elseif($status=="stok habis"){
+					$status="Stok Habis";
+			?>
+				<div class="bg-danger"><?php echo $status; ?></div></center>
+			<?php		
+				}elseif($status=="diproses"){
+					$status="Diproses";
+			?>
+				<div class="bg-info"><?php echo $status; ?></div></center>
+			<?php	
+				}
+			?>
+				
 		</td>
 		<td>
-			<?php echo $data['GOLONGAN_DARAH']; ?>
+			<center><?php echo $data['GOLONGAN_DARAH']; ?></center>
 		</td>
 		<td>
-			<?php echo $data['TANGGAL']; ?>
+			<center><?php echo $data['TANGGAL']; ?></center>
 		</td>
 		<td>
-			<?php echo $data['WAKTU']; ?>
+			<center><?php echo $data['WAKTU']; ?></center>
 		</td>
 		<td>
 			<center>
@@ -364,7 +390,7 @@ $no = 0;
 					</div>
 				</div>
 				<?php
-				if ( $status != "selesai" && $status != "dibatalkan" ) {
+				if ( $status != "Selesai" && $status != "Dibatalkan" ) {
 					?>
 				<a href="rumahsakit.php?menu=permintaan&action=ubah&id=<?php echo $data['PERMINTAAN_ID']; ?>">
 					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -375,7 +401,7 @@ $no = 0;
 				}
 				?>
 				<?php
-				if ( $tanggal == 0 && $status != "dibatalkan" ) {
+				if ( $tanggal == 0 && $status != "Dibatalkan" ) {
 					?>
 				<a href="proses_batal_permintaan.php?id=<?php echo $data['PERMINTAAN_ID']; ?>">
 						<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
@@ -383,7 +409,7 @@ $no = 0;
 			
 
 				<?php
-				} else if ( $tanggal == 1 && $status != "dibatalkan" ) {
+				} else if ( $tanggal == 1 && $status != "Dibatalkan" ) {
 					if ( $jam < 0 ) {
 						?>
 				<a href="proses_batal_permintaan.php?id=<?php echo $data['PERMINTAAN_ID']; ?>">

@@ -1,93 +1,168 @@
-<h3>Tambah Formulir BDRS</h3>
-<div class="row-fluid">
-	<div class="span6">
-		<form action="petugas.php?menu=formulir&action=tambah" method="post">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th width="300px">Jenis Barang</th>
-						<th width="100px">Jumlah</th>
-						<th width="80px"></th>
-					</tr>
-				</thead>
-				<!--elemet sebagai target append-->
-				<tbody id="itemlist">
-					<tr>
-						<td><input name="jenis_input[0]" class="form-control"/>
-						</td>
-						<td><input name="jumlah_input[0]" class="form-control"/>
-						</td>
-						<td></td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td></td>
-						<td></td>
-						<td>
-							<button class="btn btn-small btn-default" onclick="additem(); return false"><i class="glyphicon glyphicon-plus"></i></button>
-							<button name="submit" class="btn btn-small btn-primary"><i class="glyphicon glyphicon-ok"></i></button>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</form>
-	</div>
-	<div class="span6">
-		<p>Hasil :</p>
-		<p>
-			<?php
-			if ( isset( $_POST[ 'submit' ] ) ) {
-				$jenis = $_POST[ 'jenis_input' ];
-				$jumlah = $_POST[ 'jumlah_input' ];
+<?php
+	require('koneksi.php');
+	$link = koneksi_db();
 
-				foreach ( $jenis as $key => $j ) {
-					echo "<p>" . $j . " : " . $jumlah[ $key ] . "</p>";
-				}
-			}
-			?>
-		</p>
+	$query = "select * from rumah_sakit";
+	$result = mysqli_query($link,$query);
+?>
+
+
+<h3>Tambah Formulir BDRS</h3>
+
+<form action="formulir_bdrs/proses_tambah_formulir_bdrs.php" method="post" enctype="multipart/form-data">
+
+<div class="col-md-6">
+		<table class="table">
+			<tr>
+				<td class="col-md-2">
+					Tanggal
+				</td>
+				<td class="col-md-4">
+					<input type="date" required name="tanggal" class="form-control">
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="col-md-6">
+		<table class="table">
+			<tr>
+				<td class="col-md-2">
+					Bank Darah Rumah Sakit
+				</td>
+				<td class="col-md-4">
+					<select name="rumah_sakit" class="form-control">
+					<?php
+						while($data_rs = mysqli_fetch_array($result)){
+							
+							echo "<option value='".$data_rs['RUMAH_SAKIT_ID']."'>".$data_rs['NAMA']."</option>";
+						}
+						?>
+						
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-md-6">
+		<table class="table">
+			<tr>
+				<td class="col-md-2">
+					Jenis Darah
+				</td>
+				<td class="col-md-4">
+					<select name="jenis_darah" class="form-control" id="jenis_darah">
+						<option value="wb">Whole Blood</option>
+						<option value="pcr">Packed Red Cells</option>
+						<option value="tc">Thrombocyt Concentrate</option>
+						<option value="lp">Liquid Plasma</option>
+						<option value="ffp">Fresh Frozen Plasma</option>
+						<option value="c">Cryoprecipitate</option>
+						<option value="wrc">Washed Red Cells</option>
+						<option value="bc">Buffy Coat</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-md-6">
+		<table class="table">
+			<tr>
+				<td class="col-md-2">
+					Golongan Darah
+				</td>
+				<td class="col-md-4">
+					<select name="golongan_darah" class="form-control" id="gol_darah">
+						<option value="A+">A+</option>
+						<option value="A-">A-</option>
+						<option value="B+">B+</option>
+						<option value="B-">B-</option>
+						<option value="AB+">AB+</option>
+						<option value="AB-">AB-</option>
+						<option value="O+">O+</option>
+						<option value="O-">O-</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="col-md-12">
+		<table class="table">
+			<tr>
+				<td class="col-md-2">
+					Barcode
+				</td>
+				<td class="col-md-10">
+					<div class="input-group control-group after-add-more">
+						<input type="text" name="barcode[]" class="typeahead form-control" placeholder="Barcode" required>
+						<div class="input-group-btn">
+							<button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Tambah</button>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-11"></div>
+	<div class="col-md-1">
+		<input type="submit" name="submit" class="btn btn-primary" value="Submit"><br>
+		<br>
+	</div>
+</form>
+
+<!--<h2>Hasil: <span id="hasil"></span></h2>-->
+
+<div class="copy hide">
+	<div class="control-group input-group" style="margin-top:10px">
+		<input type="text" name="barcode[]" class="typeahead form-control" placeholder="Barcode" required>
+		<div class="input-group-btn">
+			<button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Hapus</button>
+		</div>
 	</div>
 </div>
-<script>
-	var i = 1;
 
-	function additem() {
-		var itemlist = document.getElementById( 'itemlist' );
+<script type="text/javascript">
+	$( document ).ready( function () {
 
-		//                membuat element
-		var row = document.createElement( 'tr' );
-		var jenis = document.createElement( 'td' );
-		var jumlah = document.createElement( 'td' );
-		var aksi = document.createElement( 'td' );
+		$( ".add-more" ).click( function () {
+				var html = $( ".copy" ).html();
+				$( ".after-add-more" ).after( html );
+				autocomplete();
+			}
+		);
+		$( "body" ).on( "click", ".remove", function () {
+			$( this ).parents( ".control-group" ).remove();
+		} );
+	} );
 
-		//                meng append element
-		itemlist.appendChild( row );
-		row.appendChild( jenis );
-		row.appendChild( jumlah );
-		row.appendChild( aksi );
+	autocomplete();
 
-		//                membuat element input
-		var jenis_input = document.createElement( 'input' );
-		jenis_input.setAttribute( 'name', 'jenis_input[' + i + ']' );
-		jenis_input.setAttribute( 'class', 'form-control' );
+	function autocomplete() {
 
-		var jumlah_input = document.createElement( 'input' );
-		jumlah_input.setAttribute( 'name', 'jumlah_input[' + i + ']' );
-		jumlah_input.setAttribute( 'class', 'form-control' );
-
-		var hapus = document.createElement( 'span' );
-
-		jenis.appendChild( jenis_input );
-		jumlah.appendChild( jumlah_input );
-		aksi.appendChild( hapus );
-
-		hapus.innerHTML = '<button class="btn btn-small btn-default"><i class="glyphicon glyphicon-trash"></i></button>';
-		//                Aksi Delete
-		hapus.onclick = function () {
-			row.parentNode.removeChild( row );
-		};
-
-		i++;
+		$( 'input.typeahead' ).typeahead( {
+			source: function ( query, process ) {
+				var jenis_darah_nilai=document.getElementById('jenis_darah').value;
+				var gol_darah_nilai=document.getElementById('gol_darah').value;
+				return $.get( 'formulir_bdrs/proses_autocomplete_formulir_bdrs.php?jenis='+jenis_darah_nilai+'&gol_darah='+gol_darah_nilai, {
+						query: query
+					},
+					function ( data ) {
+						console.log( data );
+						data = $.parseJSON( data );
+						return process( data );
+					} );
+			}
+		} );
 	}
+	//	
+	//	document.getElementById("tombol_form").
+	//	addEventListener("click", tampilkan_nilai_form);
+	//	
+//		function tampilkan_nilai_form(){
+//	    var nilai_form=document.getElementById("gol_darah").value;
+//	    document.getElementById("hasil").innerHTML=nilai_form;
+//	}
 </script>
